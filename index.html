@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<head>
+  <style>
+    body {
+      background-color: gainsboro;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #drawingBoard {
+      background-color: white;
+      cursor: none;
+      user-select: none;
+
+    }
+    .invisible-row {
+      display: flex;
+      flex-direction: row;
+    }
+    .row {
+      display: flex;
+      flex-direction: row;
+      background-color: white;
+      min-width: 300px;
+      max-width: 600px;
+      height: 50px;
+      overflow-x: scroll;
+      justify-content: center;
+      margin-top: 24px;
+      margin-bottom: 24px;
+      border-radius: 24px;
+    }
+    .column {
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+      min-height: 300px;
+      max-height: 600px;
+      min-width: 200px;
+      max-width: 200px;
+      justify-content: center;
+      overflow-y: scroll;
+      margin-left: 24px;
+      margin-right: 24px;
+      border-radius: 24px;
+    }
+    .column>.row {
+      display: flex;
+      flex-direction: row;
+      background-color: white;
+      min-width: 200px;
+      max-width: 200px;
+      height: 50px;
+      justify-content: flex-start;
+      overflow-x: scroll;
+      border-radius: 24px;
+      margin-bottom: 5px;
+      margin-top: 0px;
+    }
+    .column#layersUI {
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      background-color: white;
+      min-height: 300px;
+      max-height: 300px;
+      min-width: 200px;
+      max-width: 200px;
+      justify-content: flex-start;
+      overflow-y: scroll;
+      margin-left: 0;
+      margin-right: 0;
+      border-radius: 24px;
+    }
+    button {
+      background-color: transparent;
+      border: none;
+      height: 50px;
+      width: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color ease-out 100ms;
+    }
+    button.layer-button {
+      background-color: rgb(158, 158, 158);
+      border: none;
+      flex-shrink: 0;
+      height: 50px;
+      width: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color ease-out 100ms;
+    }
+    button.layer-button.selected {
+      background-color: rgb(71, 188, 217);
+      border: none;
+      flex-shrink: 0;
+      height: 50px;
+      width: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color ease-out 100ms;
+    }
+    button:hover {
+      background-color: rgb(51, 184, 255);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    button:active {
+      background-color: rgb(0, 0, 153);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    button>img {
+      width: 35px;
+      height: 35px;
+    }
+  </style>
+  <link rel="icon" type="image/ico" href="img/icon/icon.ico">
+</head>
+<body>
+  <div class="invisible-row">
+    <div class="column"></div>
+    <canvas id="drawingBoard"></canvas>
+    <div class="column">
+      <div class="column" id="layersUI"></div>
+      <div class="row">
+        <button id="addLayer"><img src="img/add.png" id="icon"/></button>
+        <button id="removeLayer"><img src="img/remove.png" id="icon"/></button>
+        <button id="moveUpLayer"><img src="img/arrow1.png" id="icon"/></button>
+        <button id="moveDownLayer"><img src="img/arrow2.png" id="icon"/></button>
+      </div>
+      <div class="row">
+        <button id="renameLayer"><img src="img/rename.png" id="icon"/></button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <button id="eraserButton"><img src="img/eraser.png" id="icon"/></button>
+    <button id="layersButton"><img src="img/layers.png" id="icon"/></button>
+    <button id="paletteButton"><img src="img/palette.png" id="icon"/></button>
+  </div>
+  <script src="script.js"></script>
+</body>
